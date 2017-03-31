@@ -25,18 +25,17 @@ module.exports = {
     },
   // PUT /api/products/:id
   update: function(req, res, next) {
-    // db.update_product([req.params.id], function(err, product) {
-    //   console.log(err, product)
-    //   res.json(product)
-    // });
-    res.send("Once I was a cow but then I was PUT in api/products with " + req.params.id);
+    const { product } = req.body;
+    db.update_product([req.body.product, req.params.id], function(err, product) {
+      console.log(req.body)
+      res.json(product)
+    });
   },
   // DELETE /api/products/:id
   destroy: function(req, res, next) {
-    // db.delete_product([req.params.id], function(err, product) {
-    //   console.log(err, product)
-    //   res.json(product)
-    // });
-    res.send("I have deleted something, especially not " + req.params.id)
+    db.delete_product([req.params.id], function(err, product) {
+      console.log(err, product)
+      res.json(product);
+    });
   }
 }
