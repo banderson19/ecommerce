@@ -1,18 +1,30 @@
+// imports
 var express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
+var cors = require('cors');
+var massive = require('massive');
 
+// app
+var app = module.exports = express();
+
+// config
 app.use(bodyParser.json());
+app.use(cors());
 
-// POST /api/products
+// config of database
+var connectionString = "postgres://postgres:Lanier19@localhost/ecommerce_project";
+var massiveInstance = massive.connectSync({connectionString : connectionString});
+app.set('db', massiveInstance);
 
-// GET /api/products GET /api/products/:id
+var controller = require('./productCtrl.js');
+app.get('/products/:id', controller.grabOne);
+app.post('/products', controller.create);
+app.get('/products', controller.grab);
+app.put('/products/:id', controller.update);
+app.delete('/products/:id', controller.destroy);
 
-// PUT /api/products/:id
-
-// DELETE /api/products/:id
-
-var port = 5000;
+// listening on port
+var port = 5005;
 app.listen(port, function() {
   console.log('listening on port ' + port)
 });
