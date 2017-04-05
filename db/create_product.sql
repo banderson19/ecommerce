@@ -1,1 +1,1 @@
-INSERT INTO products (product) VALUES ($1);
+INSERT INTO products (product, price) VALUES ($1, $2);

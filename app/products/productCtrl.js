@@ -1,4 +1,4 @@
-var app = require('./index');
+var app = require('../../server');
 var db = app.get('db');
 
 module.exports = {
@@ -10,30 +10,30 @@ module.exports = {
     });
   },
   grabOne: function (req, res, next) {
-    db.get_product([req.params.id], function(err, product) {
+    db.get_product([req.params.productid], function(err, product) {
       console.log(err, product)
       res.json(product)
     });
   },
   // POST /api/products
   create: function(req, res, next) {
-    const { product } = req.body;
-      db.create_product([product], function(err, product) {
+    const { product, price } = req.body;
+      db.create_product([product, price], function(err, product) {
         console.log(err, product);
         res.json(product)
       });
     },
   // PUT /api/products/:id
   update: function(req, res, next) {
-    const { product } = req.body;
-    db.update_product([req.body.product, req.params.id], function(err, product) {
+    const { product, price} = req.body;
+    db.update_product([product, price, req.params.productid], function(err, product) {
       console.log(req.body)
       res.json(product)
     });
   },
   // DELETE /api/products/:id
   destroy: function(req, res, next) {
-    db.delete_product([req.params.id], function(err, product) {
+    db.delete_product([req.params.productid], function(err, product) {
       console.log(err, product)
       res.json(product);
     });
