@@ -1,5 +1,6 @@
 // imports
 var express = require('express');
+var expressSession = require('express-session');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
@@ -18,15 +19,15 @@ var connectionString = "postgres://postgres:Lanier19@localhost/ecommerce_project
 var massiveInstance = massive.connectSync({connectionString : connectionString});
 app.set('db', massiveInstance);
 
-var controller = require('./app/products/productCtrl.js');
+var controller = require('./controllers/restCtrl.js');
 app.get('/products/:productid', controller.grabOne);
 app.post('/products', controller.create);
 app.get('/products', controller.grab);
 app.put('/products/:productid', controller.update);
 app.delete('/products/:productid', controller.destroy);
 
-// listening on port
-var port = 5009;
+// listening on port. function() is representing a callback, to console.log
+var port = 5006;
 app.listen(port, function() {
   console.log('listening on port ' + port)
 });

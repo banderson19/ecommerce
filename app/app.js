@@ -12,12 +12,12 @@ angular.module('appStore', ['ui.router']).config(function ($stateProvider, $urlR
       })
       .state('cart', {
         url: '/cart',
-        templateUrl: 'app/cart/cartTmpl.html',
+        templateUrl: './app/cart/cartTmpl.html',
         controller: 'cartCtrl'
       })
       .state('checkout', {
         url: '/checkout',
-        templateUrl: 'app/checkout/checkoutTmpl.html',
+        templateUrl: './checkout/checkoutTmpl.html',
         controller: 'checkoutCtrl'
       })
 

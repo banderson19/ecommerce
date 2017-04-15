@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html ng-app="appStore">
+<html leng="en" ng-app="appStore">
 <head>
-  <meta charset="utf-8">
   <title>App Store</title>
+
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- View Styles -->
+  <link rel="stylesheet" type="text/css" href="app/product/product.css">
+
 </head>
 
 <body>
-  {{ 2+5 }}
+  <div class="mainheader">
+    <h1>WELCOME TO THE APPLE STORE</h1>
+  </div>
 
+  <div class="navbar">
+      <ul>
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="product">Products</a></li>
+          <li style="float:right"><a ui-sref="cart">Cart</a></li>
+          <!-- <li><a ui-sref="checkout">Checkout</a></li> -->
+      </ul>
+  </div>
 
-  <ui-view></ui-view>
+  <div class="view-container">
+    <ui-view></ui-view>
+  </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 
-  <script src="app.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/product/productCtrl.js"></script>
+  <script src="app/product/productService.js"></script>
+  <script src="app/home/homeCtrl.js"></script>
+  <!-- <script src="app/home/homeService.js"></script> -->
+  <!-- <script src="app/cart/cartCtrl.js"></script>
+  <script src="app/cart/cartService.js"></script> -->
+
+
+
+  <script src="app/mainService.js"></script>
+
+
+
+
+
 
 </body>
 </html>
