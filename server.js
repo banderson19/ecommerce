@@ -26,6 +26,9 @@ app.get('/products', controller.grab);
 app.put('/products/:productid', controller.update);
 app.delete('/products/:productid', controller.destroy);
 
+
+
+
 // listening on port. function() is representing a callback, to console.log
 var port = 5006;
 app.listen(port, function() {

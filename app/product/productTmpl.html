@@ -1,6 +1,6 @@
 <section>
-  <h1> Products Page </h1>
-  <div class="products-container" ng-repeat="item in productData">
+  <h1> Products Page ({{cartCount}})</h1>
+  <div class="products-container" ng-repeat="item in productsData">
     <div class="product-inner-left">
       Product:  {{ item.product}} </br>
       Price: {{ item.price }} </br>
@@ -8,6 +8,8 @@
     <div class="image-container">
       <img ng-src="{{ item.image }}">
     </div>
-    <button ui-sref="cart({id: {{ item.productid }} })">ADD TO CART</button>
+    <form data-ng-submit="addToCart(item.productid)">
+      <input type="submit" value="add to cart"/>
+    </form>
   </div>
 </section>
